@@ -23,7 +23,7 @@ Shared (types, errors, schemas)
 - **API:** Fastify
 - **Queue:** BullMQ + Redis
 - **Database:** PostgreSQL + Prisma
-- **AI:** OpenAI Responses API (GPT-5.5)
+- **AI:** OpenRouter (`openai/gpt-5.3-codex`)
 - **Testing:** Vitest
 
 ## Getting Started
@@ -41,7 +41,7 @@ pnpm test
 - [x] Monorepo scaffolding (Turborepo, pnpm, TypeScript, ESLint, Prettier)
 - [x] `@ai-pr-reviewer/shared` — domain errors, types, Zod schemas
 - [ ] `@ai-pr-reviewer/parser` — diff parsing
-- [ ] `@ai-pr-reviewer/ai` — OpenAI provider
+- [ ] `@ai-pr-reviewer/ai` — OpenRouter provider
 - [ ] `@ai-pr-reviewer/review-engine` — review orchestration
 - [ ] `@ai-pr-reviewer/github` — GitHub API service
 - [ ] `apps/github-app` — webhook receiver
@@ -55,7 +55,7 @@ ai-pr-reviewer/
 │   ├── github-app/     # Fastify webhook server
 │   └── worker/         # BullMQ job consumer
 ├── packages/
-│   ├── ai/             # AIProvider interface + OpenAI implementation
+│   ├── ai/             # AIProvider interface + OpenRouter implementation
 │   ├── github/         # GitHub service (Octokit wrapper)
 │   ├── review-engine/  # Prompt builder + review orchestration
 │   ├── parser/         # Unified diff parser
