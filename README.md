@@ -151,6 +151,7 @@ Developer                GitHub              github-app           Redis         
 ```
 ai-pr-reviewer/
 ├── apps/
+│   ├── web/                     # React + Tailwind marketing site
 │   ├── github-app/              # Fastify server — webhook receiver
 │   └── worker/                  # BullMQ consumer — review processor
 │
@@ -419,6 +420,19 @@ https://abc123.ngrok-free.app/webhooks/github
 
 ## Running Locally
 
+### Run the marketing website
+
+```bash
+pnpm dev:web
+```
+
+Opens at [http://localhost:5173](http://localhost:5173)
+
+```bash
+pnpm --filter @ai-pr-reviewer/web build
+pnpm --filter @ai-pr-reviewer/web preview
+```
+
 ### What works today
 
 ```bash
@@ -562,6 +576,7 @@ Secrets are never logged.
 | Component | Status |
 |-----------|--------|
 | Monorepo scaffolding | Done |
+| `@ai-pr-reviewer/web` | Done |
 | `@ai-pr-reviewer/shared` | Done |
 | `@ai-pr-reviewer/parser` | Planned |
 | `@ai-pr-reviewer/ai` | Planned |
