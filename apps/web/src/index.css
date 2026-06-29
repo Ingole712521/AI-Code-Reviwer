@@ -76,3 +76,80 @@ body {
 .animate-pulse-glow {
   animation: pulse-glow 4s ease-in-out infinite;
 }
+
+.logo-glow {
+  animation: logo-glow-pulse 3s ease-in-out infinite;
+}
+
+.logo-orbit {
+  transform-origin: 16px 16px;
+  animation: logo-orbit-spin 10s linear infinite;
+}
+
+.logo-ring {
+  stroke-dasharray: 63;
+  stroke-dashoffset: 63;
+  animation:
+    logo-ring-draw 1.8s ease-out forwards,
+    logo-ring-breathe 3s ease-in-out 1.8s infinite;
+}
+
+.logo-check {
+  stroke-dasharray: 18;
+  stroke-dashoffset: 18;
+  animation: logo-check-draw 0.7s ease-out 1.2s forwards;
+}
+
+.logo-spark {
+  animation: logo-spark-pulse 2s ease-in-out infinite;
+}
+
+@keyframes logo-glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 #10b98100;
+  }
+  50% {
+    box-shadow: 0 0 12px 2px #10b98133;
+  }
+}
+
+@keyframes logo-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes logo-ring-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes logo-ring-breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes logo-check-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes logo-spark-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
