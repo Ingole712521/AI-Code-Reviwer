@@ -1,4 +1,5 @@
 import { LogoAnimated } from './LogoAnimated';
+import { BrandName } from './BrandName';
 
 const navLinks = [
   { label: 'Features', href: '#features' },
@@ -13,7 +14,7 @@ export function Header() {
       <div className="pointer-events-auto mx-auto flex h-14 max-w-4xl items-center justify-between rounded-2xl border border-border-light/80 bg-surface-raised/75 px-4 shadow-xl shadow-black/30 backdrop-blur-xl sm:h-16 sm:px-6">
         <a href="#" className="flex items-center gap-2.5">
           <LogoAnimated />
-          <span className="text-sm font-semibold tracking-tight">AI PR Reviewer</span>
+          <BrandName size="sm" />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">

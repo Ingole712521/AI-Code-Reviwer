@@ -18,7 +18,7 @@ export function Hero() {
           </h1>
 
           <p className="hero-fade-up mt-6 text-lg leading-relaxed text-muted sm:text-xl">
-            AI PR Reviewer automatically reviews every GitHub pull request for bugs, security
+            Revio automatically reviews every GitHub pull request for bugs, security
             flaws, and logic errors — then posts inline comments directly on your PR.
           </p>
 

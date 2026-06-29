@@ -2,7 +2,7 @@ const steps = [
   {
     step: '01',
     title: 'Install the GitHub App',
-    description: 'Add AI PR Reviewer to your org or personal account and select repositories.',
+    description: 'Add Revio to your org or personal account and select repositories.',
   },
   {
     step: '02',
