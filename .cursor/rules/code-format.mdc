@@ -1,0 +1,61 @@
+---
+description: Code style — no comments, simple human-readable code
+alwaysApply: true
+---
+
+# Code Format
+
+Follow these rules for all code written or edited in this project.
+
+## No Comments
+
+- Do not add comments to code (`//`, `/* */`, `#`, `<!-- -->`, JSDoc, or docblocks).
+- Remove existing comments when editing a file, unless the user explicitly asks to keep them.
+- Do not use comments to explain logic. Make the code clear instead.
+
+## Simple and Human-Readable
+
+- Use clear names for variables, functions, classes, and files.
+- Keep functions small and focused on one task.
+- Prefer straightforward logic over clever or dense code.
+- Use simple words in identifiers and structure code so intent is obvious without explanation.
+- Break complex logic into small named functions instead of long blocks.
+
+## Examples
+
+```typescript
+// Bad — uses comments and unclear names
+function proc(d: unknown) {
+  // validate input
+  const r = schema.safeParse(d);
+  if (!r.success) throw new Error('bad');
+  return r.data;
+}
+
+// Good — no comments, clear names
+function parseReviewResponse(raw: unknown): ReviewResponse {
+  const result = reviewResponseSchema.safeParse(raw);
+
+  if (!result.success) {
+    throw new AiResponseValidationError(
+      'AI response failed schema validation',
+      result.error.errors.map((e) => `${e.path.join('.')}: ${e.message}`),
+    );
+  }
+
+  return result.data;
+}
+```
+
+## When Editing Files
+
+1. Write new code without comments.
+2. Remove comments in the parts of the file you touch.
+3. If a file has many comments and you are refactoring it, remove all comments in that file.
+4. Keep README and documentation files separate. This rule applies to source code only.
+
+## Do Not
+
+- Add `TODO` or `FIXME` comments. Use the task tracker or issues instead.
+- Leave commented-out dead code. Delete unused code.
+- Add JSDoc or inline docs in `.ts`, `.tsx`, `.js`, or config source files unless the user explicitly requests documentation in code.
