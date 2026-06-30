@@ -10,9 +10,9 @@ const navLinks = [
 
 export function Header() {
   return (
-    <header className="pointer-events-none fixed top-0 z-50 w-full px-4 pt-4 sm:px-6 sm:pt-5">
+    <header className="pointer-events-none fixed top-0 z-[100] w-full px-4 pt-4 sm:px-6 sm:pt-5">
       <div className="pointer-events-auto mx-auto flex h-14 max-w-4xl items-center justify-between rounded-2xl border border-border-light/80 bg-surface-raised/75 px-4 shadow-xl shadow-black/30 backdrop-blur-xl sm:h-16 sm:px-6">
-        <a href="#" className="flex items-center gap-2.5">
+        <a href="#home" className="flex items-center gap-2.5">
           <LogoAnimated />
           <BrandName size="sm" />
         </a>

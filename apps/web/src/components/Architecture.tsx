@@ -27,7 +27,7 @@ const layers = [
 
 export function Architecture() {
   return (
-    <section id="architecture" className="py-24">
+    <section id="architecture" className="page-section py-24">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Clean architecture</h2>

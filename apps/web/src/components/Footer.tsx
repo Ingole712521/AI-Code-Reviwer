@@ -26,7 +26,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6 pt-16 pb-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <a href="#" className="inline-flex items-center gap-3">
+            <a href="#home" className="inline-flex items-center gap-3">
               <LogoAnimated />
               <BrandName size="lg" showTagline />
             </a>

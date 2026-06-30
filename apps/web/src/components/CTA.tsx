@@ -1,6 +1,6 @@
 export function CTA() {
   return (
-    <section id="get-started" className="py-24">
+    <section id="get-started" className="page-section py-24">
       <div className="mx-auto max-w-6xl px-6">
         <div className="relative overflow-hidden rounded-3xl border border-accent/20 bg-surface-card p-12 text-center sm:p-16">
           <div className="glow-orb absolute inset-0 opacity-50" />

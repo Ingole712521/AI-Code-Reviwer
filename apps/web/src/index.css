@@ -18,6 +18,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
@@ -25,6 +26,22 @@ body {
   background-color: var(--color-surface);
   color: #f1f5f9;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+.page-section {
+  scroll-margin-top: 6rem;
+}
+
+.hero-screen {
+  box-sizing: border-box;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
 }
 
 .grid-bg {
@@ -73,7 +90,7 @@ body {
 }
 
 .hero-orb-1 {
-  top: 10%;
+  top: 25%;
   left: 15%;
   width: 200px;
   height: 200px;
@@ -82,7 +99,7 @@ body {
 }
 
 .hero-orb-2 {
-  top: 30%;
+  top: 45%;
   right: 10%;
   width: 160px;
   height: 160px;
@@ -123,6 +140,10 @@ body {
 .hero-card-enter {
   opacity: 0;
   animation: fade-up 1s ease-out 0.7s forwards;
+}
+
+.hero-card-float {
+  animation: card-float 5s ease-in-out infinite;
 }
 
 .hero-card-shine {
@@ -301,7 +322,33 @@ body {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes card-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.hero-scroll-hint {
+  animation: scroll-hint 2s ease-in-out infinite;
+}
+
+@keyframes scroll-hint {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
   }
 }
 
