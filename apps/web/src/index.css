@@ -507,3 +507,102 @@ body {
     background-position: -200% 0;
   }
 }
+
+.bento-particles {
+  background-image: radial-gradient(#ffffff08 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.bento-card {
+  display: flex;
+  min-height: 420px;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid var(--color-border);
+  background: linear-gradient(160deg, #13131f 0%, #0f0f17 100%);
+  padding: 1.75rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.bento-card:hover {
+  border-color: #10b98144;
+  box-shadow: 0 8px 40px #10b98112;
+  transform: translateY(-2px);
+}
+
+.bento-visual {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-chart-line {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: bento-chart-draw 2.5s ease-out forwards;
+}
+
+.bento-chart-dot {
+  animation: bento-dot-pulse 2s ease-in-out infinite;
+}
+
+.bento-shield-glow {
+  background: radial-gradient(circle at center, #10b98122 0%, transparent 65%);
+  animation: bento-shield-glow 3s ease-in-out infinite;
+}
+
+.bento-shield-pulse {
+  animation: bento-shield-pulse 3s ease-in-out infinite;
+}
+
+@keyframes bento-chart-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes bento-dot-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    r: 4;
+  }
+  50% {
+    opacity: 1;
+    r: 5;
+  }
+}
+
+@keyframes bento-shield-glow {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes bento-shield-pulse {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}

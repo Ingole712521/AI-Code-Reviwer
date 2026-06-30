@@ -2,7 +2,7 @@ import { LogoAnimated } from './LogoAnimated';
 import { BrandName } from './BrandName';
 
 const navLinks = [
-  { label: 'Features', href: '#features' },
+  { label: 'About', href: '#about' },
   { label: 'How it works', href: '#how-it-works' },
   { label: 'Architecture', href: '#architecture' },
   { label: 'Docs', href: 'https://github.com' },

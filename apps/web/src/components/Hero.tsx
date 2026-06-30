@@ -92,7 +92,7 @@ export function Hero() {
         </div>
 
         <a
-          href="#features"
+          href="#about"
           className="hero-fade-up mx-auto mt-8 flex flex-col items-center gap-2 text-muted transition-colors hover:text-accent"
           aria-label="Scroll to features"
         >
