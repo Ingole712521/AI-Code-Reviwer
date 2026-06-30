@@ -31,12 +31,42 @@ const steps = [
 
 export function HowItWorks() {
   const sectionRef = useRef<HTMLElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
+    const updateTimelineLine = () => {
+      const line = lineRef.current;
+      const timeline = timelineRef.current;
+      const badges = section.querySelectorAll<HTMLElement>('.how-it-works-badge');
+
+      if (!line || !timeline || badges.length < 2) return;
+
+      const timelineRect = timeline.getBoundingClientRect();
+      const firstBadge = badges[0];
+      const lastBadge = badges[badges.length - 1];
+
+      if (!firstBadge || !lastBadge) return;
+
+      const firstRect = firstBadge.getBoundingClientRect();
+      const lastRect = lastBadge.getBoundingClientRect();
+
+      const top = firstRect.top - timelineRect.top + firstRect.height / 2;
+      const height =
+        lastRect.top - timelineRect.top + lastRect.height / 2 - top;
+      const left = firstRect.left - timelineRect.left + firstRect.width / 2;
+
+      line.style.top = `${top}px`;
+      line.style.left = `${left}px`;
+      line.style.height = `${height}px`;
+    };
+
     const ctx = gsap.context(() => {
+      updateTimelineLine();
+
       const heading = section.querySelector('.how-it-works-heading');
       const headingItems = heading?.children;
 
@@ -54,9 +84,9 @@ export function HowItWorks() {
         });
       }
 
-      const timelineLine = section.querySelector('.how-it-works-line');
-      if (timelineLine) {
-        gsap.from(timelineLine, {
+      const line = lineRef.current;
+      if (line) {
+        gsap.from(line, {
           scrollTrigger: {
             trigger: section.querySelector('.how-it-works-cards'),
             start: 'top 75%',
@@ -68,7 +98,7 @@ export function HowItWorks() {
         });
       }
 
-      const cards = gsap.utils.toArray<HTMLElement>('.how-it-works-card');
+      const cards = gsap.utils.toArray<HTMLElement>('.how-it-works-row');
 
       cards.forEach((card) => {
         const badge = card.querySelector('.how-it-works-badge');
@@ -108,7 +138,17 @@ export function HowItWorks() {
       });
     }, section);
 
-    return () => ctx.revert();
+    window.addEventListener('resize', updateTimelineLine);
+
+    const resizeObserver = new ResizeObserver(updateTimelineLine);
+    const cardsContainer = section.querySelector('.how-it-works-cards');
+    if (cardsContainer) resizeObserver.observe(cardsContainer);
+
+    return () => {
+      ctx.revert();
+      window.removeEventListener('resize', updateTimelineLine);
+      resizeObserver.disconnect();
+    };
   }, []);
 
   return (
@@ -131,15 +171,25 @@ export function HowItWorks() {
         </div>
 
         <div className="how-it-works-cards relative mt-16">
-          <div className="how-it-works-line absolute top-8 left-8 hidden h-[calc(100%-4rem)] w-px origin-top bg-gradient-to-b from-accent/60 via-border-light to-transparent lg:block" />
+          <div
+            ref={timelineRef}
+            className="pointer-events-none absolute inset-0 z-0"
+            aria-hidden="true"
+          >
+            <div
+              ref={lineRef}
+              className="how-it-works-line absolute w-0.5 -translate-x-1/2 rounded-full bg-gradient-to-b from-accent via-accent/60 to-accent"
+            />
+          </div>
 
-          <div className="space-y-8">
+          <div className="relative z-10 flex flex-col gap-8">
             {steps.map((item) => (
-              <div key={item.step} className="how-it-works-card relative flex gap-6 sm:gap-8">
-                <div className="how-it-works-badge flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-accent/30 bg-accent/10 font-mono text-sm font-bold text-accent shadow-lg shadow-accent/10 sm:h-16 sm:w-16">
+              <div key={item.step} className="how-it-works-row flex items-start gap-5 sm:gap-8">
+                <div className="how-it-works-badge flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-accent/30 bg-surface-raised font-mono text-sm font-bold text-accent shadow-lg shadow-accent/10 ring-[6px] ring-surface-raised sm:h-16 sm:w-16 sm:text-base">
                   {item.step}
                 </div>
-                <div className="how-it-works-content flex-1 rounded-2xl border border-border bg-surface-card p-6 transition-colors hover:border-accent/25">
+
+                <div className="how-it-works-content min-w-0 flex-1 rounded-2xl border border-border bg-surface-card p-6 transition-colors hover:border-accent/25">
                   <h3 className="text-lg font-semibold text-slate-100">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>
                 </div>
