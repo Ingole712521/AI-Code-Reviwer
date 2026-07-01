@@ -11,6 +11,7 @@
     "dev:web": "pnpm --filter @ai-pr-reviewer/web dev",
     "dev:api": "pnpm --filter @ai-pr-reviewer/github-app dev",
     "dev:worker": "pnpm --filter @ai-pr-reviewer/worker dev",
+    "demo:review": "pnpm --filter @ai-pr-reviewer/worker demo",
     "docker:up": "docker compose -f docker/docker-compose.yml up -d",
     "lint": "turbo run lint",
     "test": "turbo run test",

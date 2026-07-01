@@ -1,3 +1,4 @@
+import { formatValidationErrors } from '@ai-pr-reviewer/shared';
 import { z } from 'zod';
 
 const envSchema = z.object({
@@ -15,7 +16,8 @@ export function loadConfig(): AppConfig {
   const result = envSchema.safeParse(process.env);
 
   if (!result.success) {
-    throw new Error('Invalid environment configuration');
+    const details = formatValidationErrors(result.error).join(', ');
+    throw new Error(`Invalid environment configuration: ${details}`);
   }
 
   return result.data;

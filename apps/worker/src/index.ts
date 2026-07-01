@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import './load-env.js';
 import pino from 'pino';
 import { BullMqReviewWorker } from '@ai-pr-reviewer/queue';
 import { loadConfig } from './config.js';

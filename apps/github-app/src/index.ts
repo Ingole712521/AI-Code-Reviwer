@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import './load-env.js';
 import { BullMqReviewQueue } from '@ai-pr-reviewer/queue';
 import { loadConfig } from './config.js';
 import { createServer } from './server.js';
