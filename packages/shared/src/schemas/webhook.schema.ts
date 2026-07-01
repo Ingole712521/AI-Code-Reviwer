@@ -13,6 +13,9 @@ export const pullRequestWebhookSchema = z.object({
   }),
   pull_request: z.object({
     number: z.number().int().positive(),
+    head: z.object({
+      sha: z.string().min(1),
+    }),
   }),
 });
 

@@ -8,6 +8,7 @@ export interface RepositoryRef {
 
 export interface ReviewJobPayload extends RepositoryRef {
   readonly pullNumber: number;
+  readonly headSha: string;
 }
 
 export interface PullRequestFile {

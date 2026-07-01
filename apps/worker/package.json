@@ -1,0 +1,28 @@
+{
+  "name": "@ai-pr-reviewer/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "lint": "eslint src/",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@ai-pr-reviewer/ai": "workspace:*",
+    "@ai-pr-reviewer/github": "workspace:*",
+    "@ai-pr-reviewer/queue": "workspace:*",
+    "@ai-pr-reviewer/review-engine": "workspace:*",
+    "@ai-pr-reviewer/shared": "workspace:*",
+    "dotenv": "^16.5.0",
+    "pino": "^9.7.0",
+    "zod": "^3.25.51"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.29",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}

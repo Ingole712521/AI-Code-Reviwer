@@ -9,7 +9,10 @@ describe('parsePullRequestWebhook', () => {
       name: 'my-repo',
       owner: { login: 'acme' },
     },
-    pull_request: { number: 42 },
+    pull_request: {
+      number: 42,
+      head: { sha: 'abc123def456' },
+    },
   };
 
   it('parses a valid pull_request webhook payload', () => {

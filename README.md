@@ -465,10 +465,16 @@ Webhook URL for GitHub App:
 https://your-tunnel-domain/webhooks/github
 ```
 
-Health check:
+Health check (includes Redis connectivity):
 
 ```
-http://localhost:3000/health
+GET http://localhost:3000/health
+```
+
+Example response:
+
+```json
+{ "status": "ok", "redis": true }
 ```
 
 ### Verify a review
