@@ -441,23 +441,35 @@ pnpm build
 pnpm test
 ```
 
-Currently only `@ai-pr-reviewer/shared` is implemented. The webhook server and worker are not yet runnable.
+Core review backend is implemented: webhook app, worker, GitHub integration, OpenRouter AI, and Redis queue.
 
-### Full local stack (when all packages are built)
+### Run the full review backend
 
 ```bash
-docker compose -f docker/docker-compose.yml up -d
-pnpm dev
+pnpm docker:up
+pnpm dev:api
+pnpm dev:worker
 ```
 
-This will start:
-
-| Service | Port | Purpose |
+| Service | Port | Command |
 |---------|------|---------|
-| `github-app` | 3000 | Webhook receiver |
-| `worker` | — | Background review processor |
-| Redis | 6379 | Job queue |
-| PostgreSQL | 5432 | App database |
+| Marketing site | 5173 | `pnpm dev:web` |
+| Webhook API | 3000 | `pnpm dev:api` |
+| Worker | — | `pnpm dev:worker` |
+| Redis | 6379 | `pnpm docker:up` |
+| PostgreSQL | 5432 | `pnpm docker:up` |
+
+Webhook URL for GitHub App:
+
+```
+https://your-tunnel-domain/webhooks/github
+```
+
+Health check:
+
+```
+http://localhost:3000/health
+```
 
 ### Verify a review
 
@@ -578,13 +590,14 @@ Secrets are never logged.
 | Monorepo scaffolding | Done |
 | `@ai-pr-reviewer/web` | Done |
 | `@ai-pr-reviewer/shared` | Done |
-| `@ai-pr-reviewer/parser` | Planned |
-| `@ai-pr-reviewer/ai` | Planned |
-| `@ai-pr-reviewer/review-engine` | Planned |
-| `@ai-pr-reviewer/github` | Planned |
-| `apps/github-app` | Planned |
-| `apps/worker` | Planned |
-| `docker/` | Planned |
+| `@ai-pr-reviewer/parser` | Done |
+| `@ai-pr-reviewer/ai` | Done |
+| `@ai-pr-reviewer/review-engine` | Done |
+| `@ai-pr-reviewer/github` | Done |
+| `@ai-pr-reviewer/queue` | Done |
+| `apps/github-app` | Done |
+| `apps/worker` | Done |
+| `docker/` | Done |
 | `prisma/` | Planned |
 
 ---
